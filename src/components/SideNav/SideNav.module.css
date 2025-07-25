@@ -1,8 +1,27 @@
+.menuButton {
+  display: none;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1001;
+  background: #0a223e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
 .sideNav {
-  background-color: #0A223E;
+  background-color: #0a223e;
   color: #fff;
   height: 100vh;
-  width: 300px;
+  width: 80px;
   transition: all 0.3s ease-in-out;
   position: fixed;
   overflow: hidden;
@@ -10,136 +29,115 @@
   flex-direction: column;
   z-index: 1000;
   box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
-
-  img {
-    width: 200px;
-    margin: 0 auto;
-    padding: 20px 0;
-    transition: all 0.3s ease-in-out;
-    object-fit: contain;
-  }
-
-  ul {
-    list-style: none;
-    padding: 0 15px;
-    margin: 0;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-
-    .toggleButton {
-
-      background: rgba(0, 11, 71, 0.829);
-
-
-      border: none;
-      border-radius: 5px;
-      width: 40px;
-      height: 40px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      position: fixed;
-
-
-      i {
-        color: white;
-        font-size: 1.2rem;
-      }
-    }
-
-    li {
-      border-radius: 5px;
-      transition: all 0.2s ease;
-
-      a {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        text-decoration: none;
-        color: #fff;
-        width: 100%;
-        padding: 12px 15px;
-        border-radius: 5px;
-        transition: all 0.2s ease;
-        background: transparent;
-
-        i {
-          min-width: 24px;
-          text-align: center;
-          font-size: 1.1rem;
-        }
-
-        p {
-          margin: 0;
-          opacity: 1;
-          transition: opacity 0.2s ease 0.1s;
-          white-space: nowrap;
-        }
-      }
-
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-
-        a {
-          transform: translateX(3px);
-        }
-      }
-
-      &.active {
-        background-color: rgba(0, 97, 255, 0.2);
-
-        a {
-          font-weight: 500;
-        }
-      }
-    }
-  }
 }
 
-.sideNavClosed {
-  width: 80px;
+.sideNavOpen {
+  width: 300px;
+}
 
-  img {
-    width: 50px;
-    padding: 10px 0;
-  }
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  transition: all 0.3s ease-in-out;
+}
 
-  ul {
-    padding: 0 10px;
+.logo {
+  width: 50px;
+  transition: all 0.3s ease-in-out;
+  object-fit: contain;
+}
 
-    li a {
-      justify-content: center;
-      padding: 12px 0;
+.sideNavOpen .logo {
+  width: 200px;
+}
 
-      p {
-        opacity: 0;
-        transition: opacity 0.1s ease;
-        width: 0;
-      }
-    }
+.sideNav ul {
+  list-style: none;
+  padding: 0 10px;
+  margin: 0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
 
-    .toggleButton {}
-  }
+.sideNavOpen ul {
+  padding: 0 15px;
+}
+
+.sideNav li {
+  border-radius: 5px;
+  transition: all 0.2s ease;
+}
+
+.sideNav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  text-decoration: none;
+  color: #fff;
+  width: 100%;
+  padding: 12px 0;
+  border-radius: 5px;
+  transition: all 0.2s ease;
+  background: transparent;
+}
+
+.sideNavOpen a {
+  justify-content: flex-start;
+  padding: 12px 15px;
+}
+
+.sideNav i {
+  min-width: 24px;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.sideNav p {
+  margin: 0;
+  opacity: 0;
+  transition: opacity 0.1s ease;
+  width: 0;
+  white-space: nowrap;
+}
+
+.sideNavOpen p {
+  opacity: 1;
+  transition: opacity 0.2s ease 0.1s;
+  width: auto;
+}
+
+.sideNav li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sideNavOpen li:hover a {
+  transform: translateX(3px);
+}
+
+.sideNav li.active {
+  background-color: rgba(0, 97, 255, 0.2);
+}
+
+.sideNavOpen li.active a {
+  font-weight: 500;
 }
 
 @media (max-width: 768px) {
-  .sideNav {
-    width: 0px;
-
-    .toggleButton {
-      display: flex;
-      position: fixed;
-      top: 10px;
-    }
-
-    &:not(.sideNavClosed) {
-      width: 300px;
-      box-shadow: 2px 0 15px rgba(0, 0, 0, 0.3);
-    }
+  .menuButton {
+    display: flex;
   }
 
+  .sideNav {
+    width: 0;
+    box-shadow: none;
+  }
+
+  .sideNavOpen {
+    width: 300px;
+    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.3);
+  }
 }
